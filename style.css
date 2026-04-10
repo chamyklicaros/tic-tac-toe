@@ -102,3 +102,30 @@ body{
     background-color: #5D3FD3;
 }
 
+.Name:first-child{
+    display: none;
+    
+
+  
+}
+
+.Name.show{
+        display:flex;
+    z-index: 1;
+    background-color: black;
+        
+
+    color: #D3A73F;
+    flex-direction: column;
+    margin-bottom: 20px;
+    align-items: center;
+  
+    border: 2px solid black;
+    width: 200px;
+    height: auto;
+    transform: translateX(420%);
+    
+}
+
+
+
