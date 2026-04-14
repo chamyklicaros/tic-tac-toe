@@ -5,6 +5,8 @@ function resetGame(cells){
     cells.forEach(cell => {
         cell.textContent = '';
         cell.style.pointerEvents = 'auto';
+        player1Turn = true;
+        player2Turn = false;
     });
 }
 
@@ -60,6 +62,8 @@ function main(){
 
     const name1Input = document.querySelector('.name1Input');
     const name2Input = document.querySelector('.name2Input');
+
+    const turnIndicator = document.querySelector('.turn-indicator');
     
     const player1 = new player(player1NameInput.value || "Player 1");
     const player2 = new player(player2NameInput.value || "Player 2");
@@ -69,6 +73,8 @@ function main(){
 
     let firstPlayerTurn = true;
     let secondPlayerTurn = false;
+
+
 
    
 
@@ -93,6 +99,7 @@ function main(){
 
 
     const newButton = document.querySelector('#newButton');
+    turnIndicator.textContent = `${player1.name}'s turn`;
  
 
 
@@ -106,38 +113,58 @@ function main(){
                 cell.style.pointerEvents = 'none';
                 firstPlayerTurn = false;
                 secondPlayerTurn = true;
+                turnIndicator.textContent = `${player2.name}'s turn`;
             }
             else if (secondPlayerTurn){
                 cell.textContent = 'O';
                 cell.style.pointerEvents = 'none';
                 firstPlayerTurn = true;
                 secondPlayerTurn = false;
+                turnIndicator.textContent = `${player1.name}'s turn`;
             }
 
             if (checkWin(winConditions, cells)){
                 if (firstPlayerTurn){
-                    player2.incrementScore();
+                    player2.incrementScore(); 
+                    name2Input.textContent = `${player2.name}: ${player2.score}`;
+                    
 
                     alert(`${player2.name} wins!`);
-                    cells.forEach(cell => cell.style.pointerEvents = 'none');
+                      
+                    
+
                 }
                 else {
                     player1.incrementScore();
+                    name1Input.textContent = `${player1.name}: ${player1.score}`;
                     alert(`${player1.name} wins!`);
-                    cells.forEach(cell => cell.style.pointerEvents = 'none');
+                    
+                    
                 }
+                resetGame(cells);
+                
+               
+                
             }
             else if (checkDraw(cells)){
                 alert("It's a draw!");
-                cells.forEach(cell => cell.style.pointerEvents = 'none');
 
             }
+
+     
             
         });
     });
 
         newButton.addEventListener('click', () => {
-        resetGame(cells);
+            player1.score = 0;
+            player2.score = 0;
+            name1Input.textContent = `${player1.name}: ${player1.score}`;
+            name2Input.textContent = `${player2.name}: ${player2.score}`;
+            firstPlayerTurn = true;
+            secondPlayerTurn = false;
+            turnIndicator.textContent = `${player1.name}'s turn`;
+            resetGame(cells);
     });
 
 } 

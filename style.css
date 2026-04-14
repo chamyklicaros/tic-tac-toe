@@ -68,13 +68,23 @@ body{
   
 }
 
+
+
+.game{
+    display: flex;
+     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    flex: 1;
+}
+
 .board{
     display: grid;
-    position: absolute;
+ 
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    left: 50%;
-    transform: translateX(-50%);
+
    
 }
 
@@ -96,35 +106,80 @@ body{
     flex-direction: column;
     align-items: center;
     height: 100vh;
-    border: 2px solid black;
+    width: 100px;
+
     border-radius: 2px;
      margin-left: auto;
     background-color: #5D3FD3;
+    gap: 20px;
+    padding-top: 50px;
+    color: #d35d3f;
+}
+
+.title{
+    font-size: 1.2em;
+    color: #D3A73F;
+
+}
+
+.side-bar button{
+       padding: 5px 2px;
+
 }
 
 .Name:first-child{
     display: none;
+
     
 
   
 }
 
 .Name.show{
-        display:flex;
+    display:flex;
     z-index: 1;
     background-color: black;
+    position: absolute;
         
 
-    color: #D3A73F;
+    color: #D35D3F;
     flex-direction: column;
     margin-bottom: 20px;
     align-items: center;
-  
+    background-color: #b5d33f;
+    
     border: 2px solid black;
     width: 200px;
     height: auto;
-    transform: translateX(420%);
+    transform: translateX(400%);
     
+}
+
+.Name button{
+    margin: 5px 5px 5px 60px;
+       padding: 5px 10px;
+
+}
+button{
+  
+    background-color: #D35D3F;
+    color: #d3a73f;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    border-radius: 5px;
+
+}
+button:hover{
+    opacity: 90%;  ;
+}
+
+.turn-indicator{
+    display: flex;
+    align-items: center;
+    background-color: #d3a73f;
+    height: 50px;
+    border-radius: 5px;
 }
 
 
